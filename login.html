@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - Travel Agency</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation bar with logo and links -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo/logo4.png" alt="Travel Agency Logo" class="main-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#howitworks">How it works</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#faq">faq</a></li>
+        </ul>
+        <!-- Theme toggle, hidden on login page -->
+        <div class="toggle-container" aria-hidden="true">
+            <input type="checkbox" id="good" class="toggle">
+            <label for="good" class="label">
+                <div class="ball"></div>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Main login form wrapper -->
+    <div class="main-wrapper login-wrapper">
+        <section class="signup-section">
+            <h2>Log In to Your Account</h2>
+            <!-- Login form -->
+            <form class="signup-form" autocomplete="off">
+                <div>
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" required placeholder="Email">
+                </div>
+                <div>
+                    <label for="login-password">Password</label>
+                    <div style="position:relative;">
+                        <!-- Password input with modern show/hide button -->
+                        <input type="password" id="login-password" name="password" required placeholder="Password" style="padding-right:40px;">
+                        <button type="button" id="toggle-login-password" style="position:absolute; right:5px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; padding:0; width:28px; height:28px;">
+                            <span id="eye-show" style="display:inline;">
+                                <!-- Eye SVG (show) -->
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                </svg>
+                            </span>
+                            <span id="eye-hide" style="display:none;">
+                                <!-- Eye-slash SVG (hide) -->
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 1l22 22"></path>
+                                    <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="signup-btn">Log In</button>
+                <!-- Area for error or status messages -->
+                <div id="login-message" style="margin-top:10px;color:#d32f2f;font-weight:500;"></div>
+            </form>
+            <!-- Link to signup page -->
+            <div class="signup-link">
+                Don't have an account? <a href="signup.html">Sign up</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+    // Wait for the DOM to be fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        // Hide the theme toggle for the login page
+        var toggle = document.querySelector('.toggle-container');
+        if (toggle) {
+            toggle.style.transition = "opacity 0.05s";
+            toggle.style.opacity = '0';
+            toggle.style.pointerEvents = 'none';
+        }
+
+        // Password view toggle logic with modern SVG icons
+        const loginPasswordInput = document.getElementById('login-password');
+        const toggleLoginPassword = document.getElementById('toggle-login-password');
+        const eyeShow = document.getElementById('eye-show');
+        const eyeHide = document.getElementById('eye-hide');
+        if (toggleLoginPassword && loginPasswordInput) {
+            toggleLoginPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isPassword = loginPasswordInput.type === 'password';
+                loginPasswordInput.type = isPassword ? 'text' : 'password';
+                eyeShow.style.display = isPassword ? 'none' : 'inline';
+                eyeHide.style.display = isPassword ? 'inline' : 'none';
+            });
+        }
+
+        // Handle login form submission
+        const form = document.querySelector('.signup-form');
+        const loginMessage = document.getElementById('login-message');
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission
+            loginMessage.textContent = ""; // Clear previous messages
+
+            // Get email and password values from the form
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            // Simple validation: check if both fields are filled
+            if (!email || !password) {
+                loginMessage.textContent = "Please enter both email and password.";
+                return;
+            }
+
+            try {
+                // Send login request to backend
+                const res = await fetch('http://localhost:4000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                // Parse the response as JSON
+                const result = await res.json();
+                if (res.ok) {
+                    // If login is successful, save email to localStorage
+                    localStorage.setItem('userEmail', email);
+                    // Redirect to profile page
+                    window.location.href = "profile.html";
+                } else {
+                    // Show error message from backend or a default one
+                    loginMessage.textContent = result.message || "Login failed. Please try again.";
+                }
+            } catch (err) {
+                // Show network error if fetch fails
+                loginMessage.textContent = "Network error. Please try again.";
+            }
+        });
+    });
+    </script>
+
+<div class="footer-copyright">
+    &copy; Dev'FxWhyte
+</div>
+
+</body>
+</html>

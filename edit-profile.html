@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - Travel Agency</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .edit-profile-wrapper {
+            justify-content: space-between;
+            min-height: 90vh;
+            background: #eaf4ff;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 45px auto 24px auto;
+            padding: 16px 40px 40px 40px;
+            border-radius: 0 0 24px 24px;
+        }
+        .edit-profile-section {
+            max-width: 520px;
+            width: 100%;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 40px 32px 32px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .edit-profile-section h2 {
+            color: #1a237e;
+            margin-bottom: 18px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .profile-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 18px;
+            border: 3px solid #eaf4ff;
+            background: #eaf4ff;
+        }
+        .profile-photo-edit input[type="file"] {
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
+        .profile-photo-edit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .edit-form input, .edit-form select {
+            width: 100%;
+            padding: 7px 10px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border: 1px solid #cfd8dc;
+            font-size: 1em;
+        }
+        .edit-form label {
+            font-weight: 600;
+            color: #1a237e;
+            margin-bottom: 2px;
+            display: block;
+        }
+        .edit-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .edit-actions button {
+            flex: 1;
+        }
+        .change-password-section {
+            width: 100%;
+            margin-top: 24px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 14px 18px;
+        }
+        .change-password-section input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 7px 10px;
+            border-radius: 6px;
+            border: 1px solid #cfd8dc;
+        }
+        .change-password-section button {
+            width: 100%;
+            margin-top: 6px;
+        }
+        .success-msg {
+            color: #388e3c;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .error-msg {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .back-link {
+            margin-bottom: 18px;
+            width: 100%;
+            text-align: left;
+        }
+        .back-link a {
+            color: #1976d2;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            .edit-profile-section {
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo/logo4.png" alt="Travel Agency Logo" class="main-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#howitworks">How it works</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#faq">faq</a></li>
+        </ul>
+        <div class="toggle-container" aria-hidden="true">
+            <input type="checkbox" id="good" class="toggle">
+            <label for="good" class="label">
+                <div class="ball"></div>
+            </label>
+        </div>
+    </nav>
+
+    <div class="edit-profile-wrapper">
+        <section class="edit-profile-section" id="editProfileSection">
+            <div class="back-link"><a href="profile.html">&larr; Back to Profile</a></div>
+            <h2>Edit Profile</h2>
+            <!-- Profile photo and upload -->
+            <div class="profile-photo-edit">
+                <img src="images/default-profile.png" alt="Profile Photo" class="profile-photo" id="profilePhoto">
+                <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                <button type="button" id="changePhotoBtn" style="margin-top:8px;">Change Photo</button>
+                <div id="photoMsg"></div>
+            </div>
+            <!-- Edit profile form -->
+            <form id="editForm" class="edit-form" autocomplete="off">
+                <label for="editFirstname">First Name</label>
+                <input type="text" id="editFirstname" name="firstname" required>
+                <label for="editSurname">Surname</label>
+                <input type="text" id="editSurname" name="surname" required>
+                <label for="editDob">Date of Birth</label>
+                <input type="date" id="editDob" name="dob" required>
+                <label for="editGender">Gender</label>
+                <select id="editGender" name="gender" required>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                    <option value="prefer_not_say">Prefer not to say</option>
+                </select>
+                <label for="editPreferredClass">Preferred Class</label>
+                <select id="editPreferredClass" name="preferredClass">
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                    <option value="First">First</option>
+                </select>
+                <label for="editPreferredDestinations">Preferred Destinations (comma separated)</label>
+                <input type="text" id="editPreferredDestinations" name="preferredDestinations">
+                <label for="editMealPreference">Meal Preference</label>
+                <select id="editMealPreference" name="mealPreference">
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="No Preference">No Preference</option>
+                </select>
+                <div class="edit-actions">
+                    <button type="submit" class="edit-btn">Save</button>
+                    <button type="button" class="logout-btn" id="cancelEditBtn">Cancel</button>
+                </div>
+                <div id="editMsg"></div>
+            </form>
+            <!-- Change password section -->
+            <div class="change-password-section">
+                <div id="passwordMsg"></div>
+                <h3 style="margin-bottom:10px;">Change Password</h3>
+                <input type="password" id="oldPassword" placeholder="Current Password">
+                <input type="password" id="newPassword" placeholder="New Password">
+                <input type="password" id="confirmNewPassword" placeholder="Confirm New Password">
+                <button type="button" id="changePasswordBtn">Change Password</button>
+            </div>
+        </section>
+    </div>
+
+<script>
+// Hide toggle instantly for the edit profile page
+document.addEventListener("DOMContentLoaded", async function() {
+    // Hide the theme toggle
+    var toggle = document.querySelector('.toggle-container');
+    if (toggle) {
+        toggle.style.transition = "opacity 0.05s";
+        toggle.style.opacity = '0';
+        toggle.style.pointerEvents = 'none';
+    }
+
+    // Get the logged-in user's email from localStorage
+    const email = localStorage.getItem('userEmail');
+    if (!email) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Elements
+    const profilePhoto = document.getElementById('profilePhoto');
+    const changePhotoBtn = document.getElementById('changePhotoBtn');
+    const photoInput = document.getElementById('photoInput');
+    const photoMsg = document.getElementById('photoMsg');
+    const editForm = document.getElementById('editForm');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+    const editMsg = document.getElementById('editMsg');
+    const passwordMsg = document.getElementById('passwordMsg');
+    const changePasswordBtn = document.getElementById('changePasswordBtn');
+
+    let currentProfile = null;
+
+    // --- Load user data from backend ---
+    async function loadProfile() {
+        try {
+            // Fetch user profile from backend using email
+            const res = await fetch(`http://localhost:4000/api/user/${encodeURIComponent(email)}`);
+            if (!res.ok) throw new Error("User not found");
+            const profile = await res.json();
+            currentProfile = profile;
+
+            // Show profile photo (use base64 if available, else default)
+            if (profile.photo) {
+                profilePhoto.src = profile.photo;
+            } else {
+                profilePhoto.src = "images/default-profile.png";
+            }
+
+            // Fill form with current values
+            editForm.firstname.value = profile.firstname;
+            editForm.surname.value = profile.surname;
+            editForm.dob.value = profile.dob;
+            editForm.gender.value = profile.gender;
+            editForm.preferredClass.value = profile.preferredClass || "Economy";
+            editForm.preferredDestinations.value = (profile.preferredDestinations || []).join(', ');
+            editForm.mealPreference.value = profile.mealPreference || "Vegetarian";
+        } catch (err) {
+            alert("Could not load profile. Please log in again.");
+            window.location.href = "login.html";
+        }
+    }
+
+    await loadProfile();
+
+    // --- Profile Photo Upload ---
+    changePhotoBtn.onclick = () => photoInput.click();
+    photoInput.onchange = async function() {
+        const file = photoInput.files[0];
+        if (!file) return;
+        // Only allow image files
+        if (!file.type.startsWith('image/')) {
+            photoMsg.textContent = 'Please select an image file.';
+            photoMsg.className = 'error-msg';
+            return;
+        }
+        // Read file as base64
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            const base64 = e.target.result;
+            // Save to backend (PATCH user)
+            const res = await fetch(`http://localhost:4000/api/user/${encodeURIComponent(email)}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ photo: base64 })
+            });
+            if (res.ok) {
+                profilePhoto.src = base64;
+                photoMsg.textContent = "Photo updated!";
+                photoMsg.className = "success-msg";
+            } else {
+                photoMsg.textContent = "Could not update photo.";
+                photoMsg.className = "error-msg";
+            }
+        };
+        reader.readAsDataURL(file);
+    };
+
+    // --- Edit Profile Info ---
+    editForm.onsubmit = async function(e) {
+        e.preventDefault();
+        // Prepare updated data
+        const updated = {
+            firstname: editForm.firstname.value,
+            surname: editForm.surname.value,
+            dob: editForm.dob.value,
+            gender: editForm.gender.value,
+            preferredClass: editForm.preferredClass.value,
+            preferredDestinations: editForm.preferredDestinations.value.split(',').map(s => s.trim()).filter(Boolean),
+            mealPreference: editForm.mealPreference.value
+        };
+        // Send PATCH request to backend
+        const res = await fetch(`http://localhost:4000/api/user/${encodeURIComponent(email)}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updated)
+        });
+        if (res.ok) {
+            editMsg.textContent = "Profile updated!";
+            editMsg.className = "success-msg";
+            setTimeout(() => {
+                window.location.href = "profile.html";
+            }, 1000);
+        } else {
+            editMsg.textContent = "Could not update profile.";
+            editMsg.className = "error-msg";
+        }
+    };
+
+    // --- Cancel Edit (go back to profile page) ---
+    cancelEditBtn.onclick = function() {
+        window.location.href = "profile.html";
+    };
+
+    // --- Change Password ---
+    changePasswordBtn.onclick = async function() {
+        passwordMsg.textContent = "";
+        passwordMsg.className = "";
+        const oldPass = document.getElementById('oldPassword').value;
+        const newPass = document.getElementById('newPassword').value;
+        const confirmNewPass = document.getElementById('confirmNewPassword').value;
+        if (!oldPass || !newPass || !confirmNewPass) {
+            passwordMsg.textContent = "Please fill all password fields.";
+            passwordMsg.className = "error-msg";
+            return;
+        }
+        if (newPass !== confirmNewPass) {
+            passwordMsg.textContent = "New passwords do not match.";
+            passwordMsg.className = "error-msg";
+            return;
+        }
+        if (newPass.length < 6) {
+            passwordMsg.textContent = "New password should be at least 6 characters.";
+            passwordMsg.className = "error-msg";
+            return;
+        }
+        // Send PATCH request to backend
+        const res = await fetch(`http://localhost:4000/api/user/${encodeURIComponent(email)}/password`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ oldPassword: oldPass, newPassword: newPass })
+        });
+        if (res.ok) {
+            passwordMsg.textContent = "Password changed successfully!";
+            passwordMsg.className = "success-msg";
+            document.getElementById('oldPassword').value = "";
+            document.getElementById('newPassword').value = "";
+            document.getElementById('confirmNewPassword').value = "";
+        } else {
+            const result = await res.json();
+            passwordMsg.textContent = result.message || "Could not change password.";
+            passwordMsg.className = "error-msg";
+        }
+    };
+});
+</script>
+
+<div class="footer-copyright">
+    &copy; Dev'FxWhyte
+</div>
+
+</body>
+</html>

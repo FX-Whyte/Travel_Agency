@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Travel Agency</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-wrapper {
+            justify-content: space-between;
+            min-height: 90vh;
+            background: #eaf4ff;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 45px auto 24px auto;
+            padding: 16px 40px 40px 40px;
+            border-radius: 0 0 24px 24px;
+        }
+        .profile-section {
+            max-width: 520px;
+            width: 100%;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 40px 32px 32px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-section h2 {
+            color: #1a237e;
+            margin-bottom: 18px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .profile-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 18px;
+            border: 3px solid #eaf4ff;
+            background: #eaf4ff;
+        }
+        .profile-photo-edit input[type="file"] {
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
+        .profile-photo-edit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .profile-info {
+            width: 100%;
+            margin-top: 18px;
+        }
+        .profile-info div {
+            margin-bottom: 12px;
+            font-size: 1.08rem;
+        }
+        .profile-info strong {
+            color: #1a237e;
+            min-width: 120px;
+            display: inline-block;
+        }
+        .edit-btn, .logout-btn {
+            margin-top: 18px;
+            background: #0077ff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 
+                background 0.2s,
+                color 0.2s,
+                box-shadow 0.2s;
+        }
+        .edit-btn:hover, .logout-btn:hover {
+            color: #0077ff;
+            background: linear-gradient(90deg, #fff 60%, #eaf4ff 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        .section-title {
+            color: #1a237e;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 28px;
+            margin-bottom: 8px;
+            width: 100%;
+            text-align: left;
+        }
+        .booking-history, .travel-preferences {
+            width: 100%;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            font-size: 0.98rem;
+        }
+        .booking-history ul, .travel-preferences ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .success-msg {
+            color: #388e3c;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .error-msg {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            .profile-section {
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo/logo4.png" alt="Travel Agency Logo" class="main-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#howitworks">How it works</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#faq">faq</a></li>
+        </ul>
+        <div class="toggle-container" aria-hidden="true">
+            <input type="checkbox" id="good" class="toggle">
+            <label for="good" class="label">
+                <div class="ball"></div>
+            </label>
+        </div>
+    </nav>
+
+    <div class="profile-wrapper">
+        <section class="profile-section" id="profileSection">
+            <!-- Profile photo and upload -->
+            <div class="profile-photo-edit">
+                <img src="images/default-profile.png" alt="Profile Photo" class="profile-photo" id="profilePhoto">
+                <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                <button type="button" id="changePhotoBtn" style="margin-top:8px;">Change Photo</button>
+                <div id="photoMsg"></div>
+            </div>
+            <h2>Your Profile</h2>
+            <div class="profile-info" id="profileInfo">
+                <!-- Profile info will be injected here -->
+            </div>
+            <div class="section-title">Travel Preferences</div>
+            <div class="travel-preferences" id="travelPreferences">
+                <ul>
+                    <li>Preferred Class: <span id="preferredClass">Economy</span></li>
+                    <li>Preferred Destinations: <span id="preferredDestinations">Paris, London, New York</span></li>
+                    <li>Meal Preference: <span id="mealPreference">Vegetarian</span></li>
+                </ul>
+            </div>
+            <div class="section-title">Booking History</div>
+            <div class="booking-history" id="bookingHistory">
+                <ul id="bookingHistoryList">
+                    <li>Paris, France - 12/03/2024 - Completed</li>
+                    <li>London, UK - 22/01/2024 - Completed</li>
+                    <li>New York, USA - 05/11/2023 - Cancelled</li>
+                </ul>
+            </div>
+            <button class="edit-btn" id="editProfileBtn">Edit Profile</button>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </section>
+    </div>
+
+   <script>
+// Hide toggle instantly for the profile page
+document.addEventListener("DOMContentLoaded", async function() {
+    // Hide the theme toggle
+    var toggle = document.querySelector('.toggle-container');
+    if (toggle) {
+        toggle.style.transition = "opacity 0.05s";
+        toggle.style.opacity = '0';
+        toggle.style.pointerEvents = 'none';
+    }
+
+    // Get the logged-in user's email from localStorage
+    const email = localStorage.getItem('userEmail');
+    if (!email) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Elements
+    const profilePhoto = document.getElementById('profilePhoto');
+    const changePhotoBtn = document.getElementById('changePhotoBtn');
+    const photoInput = document.getElementById('photoInput');
+    const photoMsg = document.getElementById('photoMsg');
+    const profileInfo = document.getElementById('profileInfo');
+    const editProfileBtn = document.getElementById('editProfileBtn');
+
+    let currentProfile = null;
+
+    // --- Load user data from backend ---
+    async function loadProfile() {
+        try {
+            const res = await fetch(`http://localhost:4000/api/user/${encodeURIComponent(email)}`);
+            if (!res.ok) throw new Error("User not found");
+            const profile = await res.json();
+            currentProfile = profile;
+
+            // Show profile photo (use base64 if available, else default)
+            if (profile.photo) {
+                profilePhoto.src = profile.photo;
+            } else {
+                profilePhoto.src = "images/default-profile.png";
+            }
+
+            // Show profile info
+            profileInfo.innerHTML = `
+                <div><strong>First Name:</strong> ${profile.firstname}</div>
+                <div><strong>Surname:</strong> ${profile.surname}</div>
+                <div><strong>Date of Birth:</strong> ${profile.dob}</div>
+                <div><strong>Gender:</strong> ${profile.gender}</div>
+                <div><strong>Email:</strong> ${profile.email}</div>
+            `;
+
+            // Travel Preferences
+            document.getElementById('preferredClass').textContent = profile.preferredClass || 'Economy';
+            document.getElementById('preferredDestinations').textContent = (profile.preferredDestinations && profile.preferredDestinations.join(', ')) || 'Paris, London, New York';
+            document.getElementById('mealPreference').textContent = profile.mealPreference || 'Vegetarian';
+
+        } catch (err) {
+            alert("Could not load profile. Please log in again.");
+            window.location.href = "login.html";
+        }
+    }
+
+    await loadProfile();
+
+    // --- Profile Photo Upload ---
+    changePhotoBtn.onclick = () => photoInput.click();
+    photoInput.onchange = async function() {
+        const file = photoInput.files[0];
+        if (!file) return;
+        // Only allow image files
+        if (!file.type.startsWith('image/')) {
+            photoMsg.textContent = 'Please select an image file.';
+            photoMsg.className = 'error-msg';
+            return;
+        }
+        // Read file as base64
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            const base64 = e.target.result;
+            // Save to backend (for demo, PATCH user)
+            const res = await fetch(`http://localhost:4000/api/user/${encodeURIComponent(email)}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ photo: base64 })
+            });
+            if (res.ok) {
+                profilePhoto.src = base64;
+                photoMsg.textContent = "Photo updated!";
+                photoMsg.className = "success-msg";
+            } else {
+                photoMsg.textContent = "Could not update photo.";
+                photoMsg.className = "error-msg";
+            }
+        };
+        reader.readAsDataURL(file);
+    };
+
+    // --- Edit Profile Button ---
+    editProfileBtn.onclick = function() {
+        // Go to edit-profile.html page
+        window.location.href = "edit-profile.html";
+    };
+});
+
+// Logout function
+function logout() {
+    localStorage.removeItem('userEmail');
+    window.location.href = "login.html";
+}
+   </script>
+
+<div class="footer-copyright">
+    &copy; Dev'FxWhyte
+</div>
+
+</body>
+</html>
