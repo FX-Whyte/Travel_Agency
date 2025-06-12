@@ -294,16 +294,46 @@ html {
         width: 100%;
         max-width: 100%;
     }
+/* Hero section tweaks for mobile */
+    @media (max-width: 700px) {
+    .hero-section {
+        margin-top: 0 !important;
+        padding-top: 48px; /* Add padding if content is hidden behind navbar */
+    }
+}
 
-    /* Home page buttons: space between and responsive */
+
+/* Hero buttons: full width, responsive */
+
+@media (max-width: 700px) {
     .hero-buttons {
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        gap: 0;
+        gap: 8px;
         margin: 18px 0 0 0;
     }
+    .start-btn, .login-btn {
+        flex: 1 1 48%;
+        margin: 0;
+        min-width: 0;
+        font-size: 0.95rem;
+        padding: 8px 0;
+        border-radius: 16px;
+        white-space: nowrap;
+    }
+}
+
+/* Home page buttons: space between and responsive */
+.hero-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    margin: 18px 0 0 0;
+}
     .start-btn, .login-btn {
         flex: 1 1 48%;
         margin: 0 4px;
@@ -355,6 +385,20 @@ html {
         max-width: 100%;
     }
 }
+
+/* Responsive Design for larger screens */
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .main-wrapper {
+        min-height: calc(100vh - 45px); /* Fills viewport minus navbar */
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+
 
 /* Responsive images for very small screens */
 @media (max-width: 600px) {
