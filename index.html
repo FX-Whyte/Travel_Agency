@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <nav class="navbar">
     <div class="logo">
         <img src="logo/logo4.png" alt="Travel Agency Logo" class="main-logo">
@@ -17,7 +16,7 @@
         <li><a href="#howitworks">How it works</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#faq">Faq</a></li>
     </ul>
     <div class="toggle-container">
         <input type="checkbox" id="good" class="toggle">
@@ -45,20 +44,20 @@
         </div>
     </section>
 
-    <!-- How it works Section -->
+    <!-- How it works Section (Image Left, Text Right) -->
     <section id="howitworks" class="howitworks-section">
         <div class="howitworks-left">
+            <img src="images/picture2.jpg" alt="How It Works" class="howitworks-image">
+        </div>
+        <div class="howitworks-right">
             <h2>How It Works</h2>
             <p class="subtitle">
                 Book your dream trip in three easy steps: Search for your destination, choose your preferred package, and confirm your booking. Our team handles the rest!
             </p>
         </div>
-        <div class="howitworks-right">
-            <img src="images/picture2.jpg" alt="How It Works" class="howitworks-image">
-        </div>
     </section>
 
-    <!-- Testimonial Section -->
+    <!-- Testimonial Section (Text Left, Image Right) -->
     <section id="testimonials" class="testimonial-section">
         <div class="testimonial-left">
             <h2>What Our Travelers Say</h2>
@@ -71,59 +70,74 @@
                 <img src="images/picture10.jpg" alt="Testimonial 1" class="testimonial-slide active">
                 <img src="images/picture11.jpg" alt="Testimonial 2" class="testimonial-slide">
                 <img src="images/picture13.jpg" alt="Testimonial 3" class="testimonial-slide">
-                <!-- Add more images as needed -->
                 <button class="slider-btn prev">&#10094;</button>
                 <button class="slider-btn next">&#10095;</button>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
+     <!-- Pricing Section (Image Left, Text Right) -->
     <section id="pricing" class="pricing-section">
         <div class="pricing-left">
-            <h2>Our Packages</h2>
-            <p class="subtitle">
-                Choose from a variety of travel packages to suit your needs and budget. Whether it’s a solo adventure, family vacation, or group tour, we have the perfect plan for you.
-            </p>
+            <img src="images/picture4.jpg" alt="Pricing Plans" class="pricing-image">
         </div>
         <div class="pricing-right">
-            <img src="images/picture4.jpg" alt="Pricing Plans" class="pricing-image">
+            <h2>Our Packages</h2>
+            <p class="subtitle">
+                Choose from a variety of travel packages to suit your needs and budget.
+            </p>
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ Section with Main Drop-tab and Sub Drop-tabs -->
     <section id="faq" class="faq-section">
         <div class="faq-left">
-            <h2>Frequently Asked Questions</h2>
-            <p class="subtitle">
-                Need help? Find answers to common questions below or contact our support team for more information.
-            </p>
-            <ul class="faq-list">
-                <li>
-                    <strong>What services do you offer?</strong>
-                    <p>We provide flight bookings, hotel reservations, vacation packages, car rentals, guided tours, and travel insurance.</p>
-                </li>
-                <li>
-                    <strong>Can I book international trips?</strong>
-                    <p>Absolutely! We arrange both domestic and international travel, including visa assistance and travel insurance.</p>
-                </li>
-                <li>
-                    <strong>How do I make a reservation?</strong>
-                    <p>You can book online through our website or contact our travel experts for personalized assistance.</p>
-                </li>
-                <li>
-                    <strong>What is your cancellation policy?</strong>
-                    <p>Cancellation policies vary by service provider. Please review the terms at booking or contact us for details.</p>
-                </li>
-                <li>
-                    <strong>Do you offer group discounts?</strong>
-                    <p>Yes, we offer special rates and packages for group travel. Contact us for a custom quote.</p>
-                </li>
-                <li>
-                    <strong>Can I change my booking after confirmation?</strong>
-                    <p>Changes are possible depending on the provider's policy. Please reach out to our support team for assistance.</p>
-                </li>
-            </ul>
+            <div class="faq-main-accordion">
+                <button class="faq-main-question">Frequently Asked Questions</button>
+                <div class="faq-main-answer">
+                    <p class="subtitle">
+                        Need help? Find answers to common questions below or contact our support team for more information.
+                    </p>
+                    <div class="faq-accordion">
+                        <div class="faq-item">
+                            <button class="faq-question">What services do you offer?</button>
+                            <div class="faq-answer">
+                                <p>We provide flight bookings, hotel reservations, vacation packages, car rentals, guided tours, and travel insurance.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Can I book international trips?</button>
+                            <div class="faq-answer">
+                                <p>Absolutely! We arrange both domestic and international travel, including visa assistance and travel insurance.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">How do I make a reservation?</button>
+                            <div class="faq-answer">
+                                <p>You can book online through our website or contact our travel experts for personalized assistance.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">What is your cancellation policy?</button>
+                            <div class="faq-answer">
+                                <p>Cancellation policies vary by service provider. Please review the terms at booking or contact us for details.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Do you offer group discounts?</button>
+                            <div class="faq-answer">
+                                <p>Yes, we offer special rates and packages for group travel. Contact us for a custom quote.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Can I change my booking after confirmation?</button>
+                            <div class="faq-answer">
+                                <p>Changes are possible depending on the provider's policy. Please reach out to our support team for assistance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="faq-right">
             <!-- Optionally add an image or contact info here -->
@@ -132,8 +146,231 @@
 </main>
 <script src="script.js"></script>
 
+
+<!----------------------------------Modal HTML Signup Modal ----------------------------------------------------->
+<!-- Signup Modal -->
+<div id="signupModal" class="signup-modal">
+  <div class="signup-modal-content">
+    <button class="signup-modal-close" id="closeSignupModal" aria-label="Close">&times;</button>
+    <section class="signup-section">
+      <h2>Create Your Account</h2>
+      <form class="signup-form" autocomplete="off">
+        <div class="row">
+          <div>
+            <label for="signup-firstname">First Name</label>
+            <input type="text" id="signup-firstname" name="firstname" required placeholder="First Name">
+          </div>
+          <div>
+            <label for="signup-surname">Surname</label>
+            <input type="text" id="signup-surname" name="surname" required placeholder="Surname">
+          </div>
+        </div>
+        <div>
+          <label for="signup-dob">Date of Birth</label>
+          <input type="date" id="signup-dob" name="dob" required>
+        </div>
+        <div>
+          <label for="signup-gender">Gender</label>
+          <select id="signup-gender" name="gender" required>
+            <option value="" disabled selected>Select gender</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
+            <option value="prefer_not_say">Prefer not to say</option>
+          </select>
+        </div>
+        <div>
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" name="email" required placeholder="Email">
+        </div>
+        <div>
+          <label for="signup-password">Password</label>
+          <div style="position:relative;">
+            <input type="password" id="signup-password" name="password" required placeholder="Password" style="padding-right:40px;">
+            <button type="button" id="toggle-password" style="position:absolute; 
+            right:5px; top:50%; 
+            transform:translateY(-50%); 
+            background:none; 
+            border:none; cursor:pointer; 
+            padding:0; 
+            width:28px; 
+            height:28px;">
+              <span id="eye-show-signup" style="display:inline;">
+                <!-- Eye SVG (show) -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </span>
+              <span id="eye-hide-signup" style="display:none;">
+                <!-- Eye-slash SVG (hide) -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 1l22 22"></path>
+                  <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div id="password-strength" style="margin-top:5px; font-size:0.95em;"></div>
+        </div>
+        <div>
+          <label for="signup-confirm-password">Confirm Password</label>
+          <div style="position:relative;">
+            <input type="password" id="signup-confirm-password" name="confirm_password" required placeholder="Confirm Password" style="padding-right:40px;">
+            <button type="button" id="toggle-confirm-password" style="position:absolute; 
+            right:5px; 
+            top:50%; 
+            transform:translateY(-50%); 
+            background:none; 
+            border:none; 
+            cursor:pointer; 
+            padding:0; 
+            width:28px; 
+            height:28px;">
+              <span id="eye-show-confirm" style="display:inline;">
+                <!-- Eye SVG (show) -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </span>
+              <span id="eye-hide-confirm" style="display:none;">
+                <!-- Eye-slash SVG (hide) -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 1l22 22"></path>
+                  <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="signup-btn">Sign Up</button>
+        <div id="signup-message" style="margin-top:10px;color:#d32f2f;font-weight:500;"></div>
+      </form>
+
+      <!-- Success Message -->
+      <div id="signup-success" style="display:none;
+        margin:30px auto;
+        max-width:400px;
+        background:#e8f5e9;
+        color:#388e3c;
+        border:1px solid #c8e6c9;
+        border-radius:6px;
+        padding:20px;
+        text-align:center;
+        font-size:1.2em;"></div>
+
+      <!-- Verification Modal -->
+      <div id="verify-modal" style="display:none; 
+        position:fixed; top:0; 
+        left:0; width:100vw; 
+        height:100vh; 
+        background:rgba(0,0,0,0.5); 
+        z-index:1000; 
+        align-items:center; 
+        justify-content:center;">
+        <div style="background:#fff; 
+          padding:2rem; 
+          border-radius:8px; 
+          max-width:350px; 
+          margin:auto; 
+          box-shadow:0 2px 16px rgba(0,0,0,0.2); 
+          text-align:center;">
+          <h3>Email Verification</h3>
+          <p>A verification code was sent to your email.<br>Enter it below:</p>
+          <input type="text" id="verify-code-input" maxlength="6" style="padding:8px; 
+            width:80%; 
+            margin:10px 0; 
+            font-size:1.1em;">
+          <div id="verify-error" style="color:#d32f2f; min-height:20px;"></div>
+          <button id="verify-submit-btn" style="margin-top:10px; 
+                  padding:8px 20px; 
+                  background:#1976d2; color:#fff; 
+                  border:none; border-radius:4px; cursor:pointer;">Verify</button>
+          <button id="verify-cancel-btn" style="margin-top:10px; 
+                  padding:8px 20px; 
+                  background:#eee; 
+                  color:#333; 
+                  border:none; 
+                  border-radius:4px; 
+                  cursor:pointer; 
+                  margin-left:10px;">Cancel</button>
+        </div>
+      </div>
+
+      <div class="signup-link" style="margin-top:20px;">
+        Already have an account? <a href="#" id="showLoginModal">Log in</a>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!------------------------------------Modal HTML Login Modal -------------------------------------->
+<!-- Login Modal -->
+<div id="loginModal" class="signup-modal">
+  <div class="login-modal-content">
+    <button class="login-modal-close" id="closeLoginModal" aria-label="Close">&times;</button>
+    <section class="login-section">
+      <h2>Login to Your Account</h2>
+      <!-- Login form -->
+            <!-- <form class="signup-form" autocomplete="off"> -->
+            <form id="loginForm" class="login-form" autocomplete="off">
+                <div>
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" required placeholder="Email">
+                </div>
+                <div>
+                    <label for="login-password">Password</label>
+                    <div style="position:relative;">
+                        <!-- Password input with modern show/hide button -->
+                        <input type="password" id="login-password" name="password" required placeholder="Password" class="pw-input">
+                        <button type="button" id="toggle-login-password" style="position:absolute; 
+                                                  right:5px; 
+                                                  top:50%; 
+                                                  transform:translateY(-50%);
+                                                  background:none; 
+                                                  border:none; 
+                                                  cursor:pointer; 
+                                                  padding:0; 
+                                                  width:28px; 
+                                                  height:28px; ">                                                                              
+                            <span id="eye-show" style="display:inline;">
+                                <!-- Eye SVG (show) -->
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                </svg>
+                            </span>
+                            <span id="eye-hide" style="display:none;">
+                                <!-- Eye-slash SVG (hide) -->
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 1l22 22"></path>
+                                    <ellipse cx="12" cy="12" rx="9" ry="5"></ellipse>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+        <button type="submit" class="login-btn" style="margin-top:18px;">Log In</button>
+        <div id="login-message" style="margin-top:10px;color:#d32f2f;font-weight:500;"></div>
+      </form>
+      <div class="signup-link" style="margin-top:20px;">
+        Don't have an account? <a href="#" id="showSignupModal">Sign up</a>
+      </div>
+    </section>
+  </div>
+</div>
+<!--------------------------------------------------------------------------------------->
+
+
 <div class="footer-copyright">
     &copy; FXWhyte Travel Agency
 </div>
+
+
 </body>
 </html>

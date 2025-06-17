@@ -13,9 +13,6 @@ EXPLANATION:
 - No real email is sent; you see the code in the server console.
 */
 
-
-// --- Node.js backend for signup, verification, login, and profile (simple demo) ---
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -107,7 +104,7 @@ app.post('/api/login', (req, res) => {
     res.json(safeUser);
 });
 
-// List all users (for demo/testing only)
+// --- List all users (for demo/testing only) ---
 app.get('/api/users', (req, res) => {
     // Return all users as an array (without passwords and codes for safety)
     const userList = Object.values(users).map(user => ({
@@ -178,3 +175,20 @@ const PORT = 4000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+/*
+-------------------------
+EXPLANATION OF THE CODE:
+-------------------------
+- Uses Express for HTTP server, CORS for cross-origin requests, and body-parser for JSON.
+- Stores users in a simple JS object (for demo only; use a real DB in production).
+- /api/signup: Validates input, checks for duplicate email, generates a code, "sends" it (logs to console), and saves user as unverified.
+- /api/verify: Checks email and code, marks user as verified if correct.
+- /api/login: Validates email and password, checks if user is verified.
+- /api/users: Lists all users (for demo/testing only).
+- /api/user/:email: Gets user by email (for demo/testing only) to make up the user profile page.
+- /api/user/:email (PATCH): Updates allowed profile fields.
+- /api/user/:email/password (PATCH): Changes password after checking old password.
+- Passwords are stored in plain text for demo—**never do this in production**! Always hash passwords.
+- No real email is sent; you see the code in the server console.
+*/

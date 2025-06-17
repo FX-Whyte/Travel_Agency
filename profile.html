@@ -178,12 +178,15 @@
                 </ul>
             </div>
             <button class="edit-btn" id="editProfileBtn">Edit Profile</button>
-            <button class="logout-btn" onclick="logout()">Log Out</button>
+            <!-- <button class="logout-btn" onclick="logout()">Log Out</button> -->
+            <button class="logout-btn">Log Out</button>
         </section>
     </div>
 
-   <script>
-// Hide toggle instantly for the profile page
+
+
+
+<script>
 document.addEventListener("DOMContentLoaded", async function() {
     // Hide the theme toggle
     var toggle = document.querySelector('.toggle-container');
@@ -207,6 +210,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const photoMsg = document.getElementById('photoMsg');
     const profileInfo = document.getElementById('profileInfo');
     const editProfileBtn = document.getElementById('editProfileBtn');
+    const logoutBtn = document.querySelector('.logout-btn');
 
     let currentProfile = null;
 
@@ -285,18 +289,20 @@ document.addEventListener("DOMContentLoaded", async function() {
         // Go to edit-profile.html page
         window.location.href = "edit-profile.html";
     };
-});
 
-// Logout function
-function logout() {
-    localStorage.removeItem('userEmail');
-    window.location.href = "login.html";
-}
-   </script>
+    // --- Logout Button ---
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('userEmail');
+            window.location.href = "index.html";
+        });
+    }
+});
+</script>
 
 <div class="footer-copyright">
     &copy; Dev'FxWhyte
 </div>
-
+<!-- Footer -->
 </body>
 </html>

@@ -469,6 +469,7 @@ html {
     background: #005fcc;
 }
 
+/*---------To be used for the login Modal Aswell--------------*/
 .login-btn {
     background: #fff;
     color: #0077ff;
@@ -495,8 +496,8 @@ html {
 
 /* How It Works Section */
 .howitworks-section {
+    align-items: flex-start;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     padding: 48px 40px;
     background: #fff;
@@ -504,42 +505,55 @@ html {
     box-shadow: 0 2px 12px rgba(0,0,0,0.03);
     max-width: 1100px;
     margin: 24px auto;
+    gap: 32px; /* Add gap for spacing */
 }
 
-.howitworks-left {
+.howitworks-right, .howitworks-left {
     flex: 1;
-    max-width: 540px;
+    min-width: 0;
 }
 
-.howitworks-left h2 {
+.howitworks-image {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    display: block;
+    margin: 0 auto;
+    margin-left: 10px;
+}
+
+.howitworks-right h2 {
     font-size: 2rem;
     font-weight: 700;
     color: #1a237e;
     margin-bottom: 14px;
+    margin: 0 auto;
 }
 
-.howitworks-left .subtitle {
-    font-size: 1.1rem;
-    color: #444;
+
+@media (max-width: 700px) {
+    .howitworks-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 8px;
+        gap: 18px;
+        text-align: center;
+    }
+    .howitworks-right, .howitworks-left {
+        width: 100%;
+        max-width: 100%;
+    }
+    .howitworks-image {
+        margin: 0 auto;
+    }
 }
 
-.howitworks-right {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.howitworks-image {
-    width: 300px;
-    max-width: 100%;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-}
 
 /* Testimonial Section */
 .testimonial-section {
+    align-items: flex-start;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     padding: 48px 40px;
     background: #fff;
@@ -547,6 +561,7 @@ html {
     box-shadow: 0 2px 12px rgba(0,0,0,0.03);
     max-width: 1100px;
     margin: 24px auto;
+    gap: 32px; /* Add gap for spacing */
 }
 
 .testimonial-left {
@@ -559,11 +574,13 @@ html {
     font-weight: 700;
     color: #1a237e;
     margin-bottom: 14px;
+    margin-left: 10px;
 }
 
 .testimonial-left .subtitle {
     font-size: 1.1rem;
     color: #444;
+    margin-left: 10px;
 }
 
 .testimonial-right {
@@ -640,14 +657,15 @@ html {
 /* Pricing Section */
 .pricing-section {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 48px 40px;
-    background: #eaf4ff;
+    background: #fff;
     border-radius: 0px 0px 24px 24px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.03);
     max-width: 1100px;
     margin: 24px auto;
+    gap: 32px; /* Add gap for spacing */
 }
 
 .pricing-left {
@@ -655,14 +673,26 @@ html {
     max-width: 540px;
 }
 
-.pricing-left h2 {
+.pricing-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    justify-content: center;
+}
+
+
+.pricing-right h2 {
     font-size: 2rem;
     font-weight: 700;
     color: #1a237e;
     margin-bottom: 14px;
+    margin-top: 0;
+    text-align: left; /* or center if you prefer */
 }
 
-.pricing-left .subtitle {
+
+.pricing-right .subtitle {
     font-size: 1.1rem;
     color: #444;
 }
@@ -674,16 +704,18 @@ html {
 }
 
 .pricing-image {
-    width: 300px;
+    width: 400px;
     max-width: 100%;
     border-radius: 14px;
     box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    margin-left: 10px;
 }
+
 
 /* FAQ Section */
 .faq-section {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 48px 40px;
     background: #fff;
@@ -691,6 +723,7 @@ html {
     box-shadow: 0 2px 12px rgba(0,0,0,0.03);
     max-width: 1100px;
     margin: 24px auto;
+    min-height: 600px;
 }
 
 .faq-left {
@@ -723,48 +756,180 @@ html {
     box-shadow: 0 4px 18px rgba(0,0,0,0.07);
 }
 
-/* Signup Form Page */
-.main-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 40px 40px 40px;
+
+/* FAQ Section new styling */
+
+.faq-accordion {
+    width: 100%;
+    margin-top: 18px;
+}
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+.faq-question {
+    width: 100%;
+    background: #f8f9fa;
+    color: #1a237e;
+    text-align: left;
+    padding: 14px 18px;
+    font-size: 1.08rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.faq-question.active,
+.faq-question:hover {
     background: #eaf4ff;
-    border-radius: 0px 0px 24px 24px;
-    margin-bottom: 40px;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
+}
+.faq-answer {
+    display: none;
+    padding: 0 18px 14px 18px;
+    color: #333;
+    font-size: 1rem;
+    background: #fff;
+}
+.faq-answer.open {
+    display: block;
 }
 
-.signup-section {
-    max-width: 600px;
-    margin: 45px auto 0;
+
+.faq-main-question {
+    width: 100%;
+    background: #1a237e;
+    color: #fff;
+    text-align: left;
+    padding: 18px 22px;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+}
+.faq-main-question.active,
+.faq-main-question:hover {
+    background: #0077ff;
+}
+.faq-main-answer {
+    display: none;
     background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+}
+.faq-main-answer.open {
+    display: block;
+}
+
+.faq-accordion {
+    width: 100%;
+    margin-top: 8px;
+}
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+.faq-question {
+    width: 100%;
+    background: #f8f9fa;
+    color: #1a237e;
+    text-align: left;
+    padding: 14px 18px;
+    font-size: 1.08rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.faq-question.active,
+.faq-question:hover {
+    background: #eaf4ff;
+}
+.faq-answer {
+    display: none;
+    padding: 0 18px 14px 18px;
+    color: #333;
+    font-size: 1rem;
+    background: #fff;
+}
+.faq-answer.open {
+    display: block;
+}
+
+
+/* Profile Page */
+.main-profile-wrapper {
+    justify-content: space-between;
+    min-height: 90vh;
+    background: #eaf4ff;
     border-radius: 24px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    padding: 60px 32px 32px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 45px auto 24px auto;
+    padding: 16px 40px 40px 40px;
+    border-radius: 0 0 24px 24px;
+}
+
+
+/*------------------------------Modal CSS For Signup Modal-----------------------------------------*/
+/* Modal Overlay */
+.signup-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; 
+    height: 100vh;
+    z-index: 10000;
+    background: rgba(0,0,0,0.25);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+/* Modal Content Box */
+.signup-modal-content {
+    margin-top: 50px;
+    margin-bottom: 5px;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 32px 0px 10px 10px;
+    animation: fadeInModal 0.3s;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    max-height: 90vh;
+    overflow-y: auto;
+    height: auto;
+    position: relative;
+    z-index: 10001;
 }
+
+.signup-modal.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* -----------Borrowed From Signup Form Page---------------------- */
+
 .signup-section h2 {
     color: #1a237e;
     margin-top: -20px;
     margin-bottom: 18px;
     font-size: 2rem;
     font-weight: 700;
-}
-.signup-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-.signup-form label {
-    font-weight: 500;
-    color: #1a237e;
-    margin-bottom: 4px;
 }
 .signup-form input,
 .signup-form select {
@@ -820,36 +985,202 @@ html {
     flex-direction: column;
 }
 
-/* Login Page */
-.login-wrapper {
-    min-height: 90vh;
-    background: #eaf4ff;
-    border-radius: 24px;
+/* Modal Section (form area) */
+.signup-section {
+    max-width: 550px;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 16px 40px 40px 40px;
-    border-radius: 0px 0px 24px 24px;
-    margin-bottom: 40px;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-/* Profile Page */
-.main-profile-wrapper {
-    justify-content: space-between;
-    min-height: 90vh;
-    background: #eaf4ff;
-    border-radius: 24px;
+/* Close Button */
+.signup-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 10002;
+    transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 1100px;
-    margin: 45px auto 24px auto;
-    padding: 16px 40px 40px 40px;
-    border-radius: 0 0 24px 24px;
+    outline: none;
 }
+.signup-modal-close:hover,
+.signup-modal-close:focus {
+    color: #fff;
+    background: #1976d2;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+}
+
+
+body.modal-open > *:not(.navbar):not(.signup-modal) {
+    filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
+    transition: filter 0.3s;
+}
+
+/* Fade/scale animation for modal */
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.96);}
+    to   { opacity: 1; transform: scale(1);}
+}
+
+
+/*---------------------------- Login Modal Styles (Modern & Matches Signup Modal) ----------------------------*/
+/* Modal Content Box */
+.login-modal-content {
+    margin: 48px auto 12px auto;
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+    padding: 44px 5px 32px 5px;
+    animation: fadeInModal 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    z-index: 10001;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.login-modal.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modal Section (form area) */
+.login-section {
+    max-width: 420px;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0px 0px px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.login-form > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6px;
+}
+
+.login-form label {
+    margin-bottom: 7px;
+    font-weight: 600;
+    color: #1a237e;
+    font-size: 1.05rem;
+    letter-spacing: 0.1px;
+}
+
+/* Input fields */
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"]#login-password {
+    padding: 12px 14px;
+    padding-right: 40px; 
+    border: 1.5px solid #b3b3b3;
+    border-radius: 9px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    background: #f7fafd;
+    height: 44px;
+    font-family: inherit;
+    letter-spacing: normal;
+    font-variant-ligatures: none;
+}
+
+.login-form input:focus {
+    border-color: #0077ff;
+    box-shadow: 0 2px 8px rgba(0,119,255,0.08);
+}
+
+.login-section h2 {
+    color: #1a237e;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* Close Button */
+.login-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 22px;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 10002;
+    transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+    border-radius: 50%;
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+.login-modal-close:hover,
+.login-modal-close:focus {
+    color: #fff;
+    background: #1976d2;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+}
+
+.login-form label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #1a237e;
+    font-size: 1rem;
+}
+
+.login-form input,
+.login-form select {
+    margin-bottom: 0 !important;   /* Remove default input margin */
+}
+
+/* Hide browser's default password reveal (eye) icon */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none !important;
+}
+
 
 /* Copyright Footer */
 .footer-copyright {
@@ -864,3 +1195,7 @@ html {
     font-family: inherit;
     opacity: 0.85;
 }
+
+
+
+
